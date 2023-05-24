@@ -23,3 +23,13 @@
   &nbsp;&nbsp;
   <img src="https://github.com/springhana/mygallag/assets/97121074/402dc4e9-9002-4a3c-9c79-abf359a94c58"/>
 </p>
+<hr/>
+
+# 팔사기 장면
+* 필사기가 있다면 필사기를 쓸 수 있습니다.
+* 번개를 쏘면서 상대 비행기를 파괴합니다.
+
+<br/>
+<p>
+  <img src="https://github.com/springhana/mygallag/assets/97121074/7e89d418-8674-4c73-aa0e-5a3468bfc039"/>
+</p>
