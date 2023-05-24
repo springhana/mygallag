@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/start_activity_background"
+    android:orientation="vertical">
+
+    <!--marginTop 원래 없고 배경 밑에꺼-->
+    <!--android:background="#22ffffff"-->
+    <!--게임 제목 텍스트-->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80sp"
+        android:fontFamily="@font/maplestory_bold"
+        android:gravity="center_horizontal"
+        android:text="TFlight"
+        android:textColor="#444444"
+        android:textSize="50sp" />
+
+    <!--비행기 고르면 누를수 있게 해주는 버튼 -->
+    <ImageButton
+        android:id="@+id/startBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_button_shape"
+        android:backgroundTint="@color/black" />
+
+    <!--비행기와 선택 텍스트 담을 레이아웃-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <!--stretchColumns : TableLayout에서 너비를 자동으로 늘려준다.-->
+        <!--비행기 담을 2줄 4칸-->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="30dp"
+            android:stretchColumns="*">
+            <!--stretchColumns: 어떤 열을 가로로 확장하여 사용 가능한 공간을 채울지를 지정 (모든 열이 동일하게 확장되어 가용한 공간을 채운다 )-->
+
+            <TableRow android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/ship_001"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ship_0000" />
+
+                <ImageView
+                    android:id="@+id/ship_002"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ship_0001" />
+
+                <ImageView
+                    android:id="@+id/ship_003"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ship_0002" />
+
+                <ImageView
+                    android:id="@+id/ship_004"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ship_0003" />
+            </TableRow>
+
+            <TableRow android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/ship_005"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ship_0004" />
+
+                <ImageView
+                    android:id="@+id/ship_006"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ship_0005" />
+
+                <ImageView
+                    android:id="@+id/ship_007"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ship_0006" />
+
+                <ImageView
+                    android:id="@+id/ship_008"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ship_0007" />
+            </TableRow>
+        </TableLayout>
+
+        <!--선택 텍스트-->
+        <TextView
+            android:id="@+id/guideTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/maplestory_bold"
+            android:text="캐릭터를 선택하세요."
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+
+</FrameLayout>

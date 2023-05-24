@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="500dp"
+    android:layout_gravity="center"
+    android:background="@drawable/border_layout_full"
+    android:backgroundTint="#808080"
+    android:orientation="vertical">
+
+    <!--옵션과 취소 버튼을 담을 레이아웃-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <!--옵션 텍스트-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/maplestory_bold"
+            android:text="옵션"
+            android:textSize="34sp" />
+        <!--간격을 유지하기 위한 용도-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <!--취소 버튼-->
+        <ImageView
+            android:id="@+id/dialogCancelBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_cancel_presentation_24" />
+    </LinearLayout>
+
+    <!--배경음악과 효과음을 담을 레이아웃-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <!--배경음악을 담을 레이아웃-->
+        <LinearLayout
+            android:id="@+id/bgSoundFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <!--배경음악 텍스트-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/maplestory_bold"
+                android:text="배경음악"
+                android:textSize="20sp" />
+            <!--간격을 유지하기 위한 용도?-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <!--배경음악 ON | OFF 라디오 그룹-->
+            <RadioGroup
+                android:id="@+id/bgMusicOnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!--배경음악 OFF-->
+                <RadioButton
+                    android:id="@+id/bgMusicOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_button_shape"
+                    android:button="@null"
+                    android:drawableStart="@drawable/ic_baseline_music_off_24"
+                    android:padding="10dp" />
+                <!--배경음악 ON-->
+                <RadioButton
+                    android:id="@+id/bgMusicOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_button_shape"
+                    android:button="@null"
+                    android:drawableStart="@drawable/ic_baseline_music_note_24"
+                    android:padding="10dp" />
+                <!--drawableStart: 텍스트나 버튼과 같은 위젯의 시작 부분에 그림을 표시하는데 사용-->
+            </RadioGroup>
+        </LinearLayout>
+
+        <!--효과음을 담을 레이아웃-->
+        <LinearLayout
+            android:id="@+id/effectSoundFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <!--효과음 텍스트-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/maplestory_bold"
+                android:text="효과음"
+                android:textSize="20sp" />
+            <!--간격을 유지하기 위한 용도?-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <!--효과음 ON | OFF 라디오 그룹-->
+            <RadioGroup
+                android:id="@+id/effectSoundOnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!--효과음 OFF-->
+                <RadioButton
+                    android:id="@+id/effectSoundOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_button_shape"
+                    android:button="@null"
+                    android:drawableStart="@drawable/ic_baseline_music_off_24"
+                    android:padding="10dp" />
+                <!--효과음 ON-->
+                <RadioButton
+                    android:id="@+id/effectSoundOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_button_shape"
+                    android:button="@null"
+                    android:drawableStart="@drawable/ic_baseline_music_note_24"
+                    android:padding="10dp" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--확인 버튼-->
+    <Button
+        android:id="@+id/dialogOkBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/maplestory_bold"
+        android:text="확인"
+        android:textColor="@color/black" />
+
+</LinearLayout>
