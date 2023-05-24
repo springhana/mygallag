@@ -1,4 +1,4 @@
-<div align=center>게임 시작 화면, 죽는 장면 </div>
+<div align=center>게임 시작 화면,  죽는 장면 </div>
 
 <p align=center>
   <img src="https://github.com/springhana/mygallag/assets/97121074/955e9bb3-b4ea-42af-a05e-09c709b71a70"/>
