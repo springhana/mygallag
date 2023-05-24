@@ -33,3 +33,12 @@
 <p>
   <img src="https://github.com/springhana/mygallag/assets/97121074/7e89d418-8674-4c73-aa0e-5a3468bfc039"/>
 </p>
+<hr/>
+
+# 정지 장면
+* 정지 장면에는 배경음악과 효과음을 On/OFF 할 수 있습니다.
+
+https://github.com/springhana/mygallag/assets/97121074/6e3f50b6-a455-42c9-b063-dac7745c4135
+
+
+
