@@ -1,4 +1,4 @@
-# 선택 화면&nbsp;&nbsp;|&nbsp;&nbsp; # 죽는 장면
+## 선택 화면&nbsp;&nbsp;|&nbsp;&nbsp;# 죽는 장면
 <div>적 비행기에게 충돌나거나 총알을 맞으면 생명❤️ 한개를 읽게됩니다.</div>
 <p>
   <img src="https://github.com/springhana/mygallag/assets/97121074/955e9bb3-b4ea-42af-a05e-09c709b71a70"/>
