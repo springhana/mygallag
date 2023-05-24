@@ -40,5 +40,6 @@
 
 https://github.com/springhana/mygallag/assets/97121074/6e3f50b6-a455-42c9-b063-dac7745c4135
 
+실제 게임은 확률이 다릅니다.
 
 
