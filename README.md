@@ -8,7 +8,7 @@
   &nbsp;&nbsp;
   <img src="https://github.com/springhana/mygallag/assets/97121074/e04878e8-6625-4ccc-a0d5-af20a96fd84d"/>
 </p>
-
+<hr/>
 
 ### 파워 아이템&nbsp;&nbsp;|&nbsp;&nbsp;스피드 아이템|&nbsp;&nbsp;힐링 아이템
 
