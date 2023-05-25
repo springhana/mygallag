@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
     //음악 체인지
     private void changeBgMusic() {
+        // 음악 끝나면 계속 실행됨
         bgMusic = MediaPlayer.create(this, bgMusicList.get(bgMusicIndex)); // 미디어 플레이어 생성 (컨스턴스 객체, 배경음악(초기값은 0) )
         bgMusic.start(); // 배경 음악 시작
         bgMusicIndex++; // 처음 게임 시작 시 처음 음악을 틀어야 하니 시작 후 인덱스 추가

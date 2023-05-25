@@ -111,7 +111,7 @@ public class AlienSprite extends Sprite {
     private void spawnPowerItem() {
         Random r = new Random();
         int powerItemDrop = r.nextInt(100) + 1;
-        if (powerItemDrop <= 3) {
+        if (powerItemDrop <= 3) { //확률
             int dx = r.nextInt(10) + 1;
             int dy = r.nextInt(10) + 10;
             game.getSprites().add(new PowerItemSprite(context, game, (int) this.getX(), (int) this.getY(), dx, dy));

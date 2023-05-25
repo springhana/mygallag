@@ -30,5 +30,9 @@ public class ResultActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.userFinalScoreText)).setText(getIntent().getIntExtra("score", 0) + ""); //spaceInvadersView에서 받아온 score점수를 userFinalScoreText에 넣어준다
     }
 
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+    }
 
 }
