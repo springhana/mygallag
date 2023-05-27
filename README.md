@@ -35,6 +35,15 @@
 </p>
 <hr/>
 
+# 필사기 충전 장면
+* 필사기는 시작 시 3번 쓸 수 있므며 필사기 아이템을 먹을 시 1번 충전이 됩니다.
+
+<br/>
+<p>
+  <img src="https://github.com/springhana/mygallag/assets/97121074/81ccbe9d-b07f-4248-80c4-5705bcd5f491"/>
+</p>
+<hr/>
+
 # 정지 장면
 * 정지 장면에는 배경음악과 효과음을 On/OFF 할 수 있습니다.
 
