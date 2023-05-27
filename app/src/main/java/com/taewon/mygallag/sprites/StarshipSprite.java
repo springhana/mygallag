@@ -13,6 +13,7 @@ import com.taewon.mygallag.R;
 import com.taewon.mygallag.SpaceInvadersView;
 import com.taewon.mygallag.items.HealitemSprite;
 import com.taewon.mygallag.items.PowerItemSprite;
+import com.taewon.mygallag.items.SpecialItemSprite;
 import com.taewon.mygallag.items.SpeedItemSprite;
 
 import java.util.ArrayList;
@@ -68,6 +69,12 @@ public class StarshipSprite extends Sprite {
     public int getBulletsCount() {
         return bullets;
     }
+
+    //번개 개수 리턴
+    public int getspecialShotCountCount() {
+        return specialShotCount;
+    }
+
 
     //위, 아래, 오른쩍, 왼쪽 이동하기
     public void moveRight(double force) {
@@ -158,6 +165,18 @@ public class StarshipSprite extends Sprite {
         SpecialshotSprite shot = new SpecialshotSprite(context, game, R.drawable.laser, getRect().right - getRect().left, 0);
         // game -> SpaceInvadersView의 getSprites() : sprite에 shot 추가하기
         game.getSprites().add(shot);
+
+        // 따로 추가 했음
+        MainActivity.specialShotBtn.setEnabled(false);
+        MainActivity.specialShotCount.setText(specialShotCount + "/3"); // 메인으로 넘겨주기
+        MainActivity.specialShotCount.invalidate(); //화면 새로고침
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MainActivity.specialShotBtn.setEnabled(true);
+            }
+        }, 5000);
+
     }
 
     public int getSpecialShotCount() {
@@ -199,6 +218,7 @@ public class StarshipSprite extends Sprite {
         }
         ((ImageView) MainActivity.lifeFrame.getChildAt(life)).setImageResource(R.drawable.ic_baseline_favorite_24);
         life++;
+//        specialShotCount++;
     }
 
     //속도 올리기
@@ -207,6 +227,16 @@ public class StarshipSprite extends Sprite {
         else {
             game.setScore(game.getScore() + 1);
             MainActivity.scoreTv.setText(Integer.toString((game.getScore())));
+        }
+    }
+
+    private void specialUp() {
+        if (specialShotCount > 3) {
+            return;
+        } else {
+            specialShotCount++;
+            MainActivity.specialShotCount.invalidate(); //화면 새로고침
+            MainActivity.specialShotCount.setText(specialShotCount + "/3"); // 메인으로 넘겨주기
         }
     }
 
@@ -219,7 +249,7 @@ public class StarshipSprite extends Sprite {
             MainActivity.effectSound(MainActivity.PLAYER_HURT);
             hurt();
         }
-        if(other instanceof AlienShotSprite){
+        if (other instanceof AlienShotSprite) {
             //총알 맞으면
             MainActivity.effectSound(MainActivity.PLAYER_HURT);
             game.removeSprite(other);
@@ -242,6 +272,12 @@ public class StarshipSprite extends Sprite {
             MainActivity.effectSound(MainActivity.PLAYER_GET_ITEM);
             game.removeSprite(other);
             speedUp();
+        }
+        if (other instanceof SpecialItemSprite) {
+            //빌사기 아이템 맞으면
+            MainActivity.effectSound(MainActivity.PLAYER_GET_ITEM);
+            game.removeSprite(other);
+            specialUp();
         }
     }
 

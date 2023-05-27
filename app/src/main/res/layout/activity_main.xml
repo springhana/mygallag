@@ -64,6 +64,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="20dp">
+                <!--번개 갯 수 텍스트-->
+                <TextView
+                    android:id="@+id/specialShotCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="none"
+                    android:text=""
+                    android:textSize="18sp" />
                 <!--번개 버튼-->
                 <ImageButton
                     android:id="@+id/specialShotBtn"

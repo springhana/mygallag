@@ -29,13 +29,14 @@ import io.github.controlwear.virtual.joystick.android.JoystickView;
 public class MainActivity extends AppCompatActivity {
 
     //  ===== xml =====
-    public static ImageButton fireBtn, reloadBtn; // 발싸 버튼, 장전 버튼 
-    ImageButton specialShotBtn; // 필사기 번튼
+    public static ImageButton fireBtn, reloadBtn; // 발싸 버튼, 장전 버튼
+    public static ImageButton specialShotBtn; // 필사기 번튼
     ImageView pauseBtn; // 정지 버튼
     LinearLayout gameFrame; // 게임 화면을 가리키는 LinearLayout
     public static LinearLayout lifeFrame; // 생명(하트 3개)를 가리키는 LinearLayout
     public static TextView scoreTv; // 점수 텍스트
     public static TextView bulletCount; // 총알 텍스트
+    public static TextView specialShotCount; //번개 텍스트
     JoystickView joyStick; // 조이스틱
     //  ===== xml =====
 
@@ -114,8 +115,11 @@ public class MainActivity extends AppCompatActivity {
 
         bulletCount = findViewById(R.id.bulletCount); //총알 개수 id 가져오기
 
+        specialShotCount = findViewById(R.id.specialShotCount); // 번개 개수 id 가져오기
+
         //spaceInvadersView의 getPlayer() 구현
         bulletCount.setText(spaceInvadersView.getPlayer().getBulletsCount() + "/30"); // 30/30 표시
+        specialShotCount.setText(spaceInvadersView.getPlayer().getspecialShotCountCount() + "/3"); // 번개 갯 수 표시
         scoreTv.setText(Integer.toString(spaceInvadersView.getScore())); // score: 0 표시
 
         effectSoundList = new ArrayList<>(); // 효과음을 담을 리스트 생성 ( 밑에 차례대로 추가 )
@@ -236,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
         specialShotBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (spaceInvadersView.getPlayer().getSpecialShotCount() >= 0) // 필사기 카운터가 0보다 많거나 같으면 필사기 사용
+                if (spaceInvadersView.getPlayer().getSpecialShotCount() > 0) // 필사기 카운터가 0보다 많거나 필사기 사용
                     spaceInvadersView.getPlayer().specialShot();
             }
         });

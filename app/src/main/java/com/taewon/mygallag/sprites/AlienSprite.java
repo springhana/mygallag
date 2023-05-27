@@ -11,6 +11,7 @@ import com.taewon.mygallag.R;
 import com.taewon.mygallag.SpaceInvadersView;
 import com.taewon.mygallag.items.HealitemSprite;
 import com.taewon.mygallag.items.PowerItemSprite;
+import com.taewon.mygallag.items.SpecialItemSprite;
 import com.taewon.mygallag.items.SpeedItemSprite;
 
 import java.util.ArrayList;
@@ -87,6 +88,7 @@ public class AlienSprite extends Sprite {
         spawnHealItem();
         spawnPowerItem();
         spawnSpeedItem();
+        spawnSpecialItem();
         game.setScore(game.getScore() + 1);
         MainActivity.scoreTv.setText(Integer.toString(game.getScore()));
     }
@@ -127,6 +129,17 @@ public class AlienSprite extends Sprite {
             int dy = r.nextInt(10) + 10;
             game.getSprites().add(new HealitemSprite(context, game, (int) this.getX(), (int) this.getY(), dx, dy));
 
+        }
+    }
+
+    // 따로 추가
+    private void spawnSpecialItem() {
+        Random r = new Random();
+        int specialItemDrop = r.nextInt(100) + 1;
+        if (specialItemDrop <= 50) {
+            int dx = r.nextInt(10) + 1;
+            int dy = r.nextInt(10) + 5;
+            game.getSprites().add(new SpecialItemSprite(context, game, (int) this.getX(), (int) this.getY(), dx, dy));
         }
     }
 
