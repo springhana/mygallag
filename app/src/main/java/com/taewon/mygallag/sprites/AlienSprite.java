@@ -62,6 +62,7 @@ public class AlienSprite extends Sprite {
             if (y > game.screenH) {
                 game.removeSprite(this); //SpaceInvadersView
             }
+            // 적이 맵을 벗어나면 안사라짐
         }
     }
 

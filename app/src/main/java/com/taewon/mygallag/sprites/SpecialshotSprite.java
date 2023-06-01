@@ -1,6 +1,5 @@
 package com.taewon.mygallag.sprites;
 
-
 import android.content.Context;
 
 import com.taewon.mygallag.SpaceInvadersView;
