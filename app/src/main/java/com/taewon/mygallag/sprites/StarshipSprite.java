@@ -20,19 +20,20 @@ import java.util.ArrayList;
 
 public class StarshipSprite extends Sprite {
 
-    Context context;
-    SpaceInvadersView game;
-    public float speed;
-    private int bullets, life = 3, powerLevel;
-    private int specialShotCount;
-    private boolean isSpecialShooting;
-    private static ArrayList<Integer> bulletSprites = new ArrayList<Integer>();
-    private final static float MAX_SPEED = 3.5f;
-    private final static int MAX_HEART = 3;
-    private RectF rectF;
+    Context context;        // 메인 액티비티
+    SpaceInvadersView game; // 게임 진행에 필요한 함수 사용
+    public float speed;     // 플레이어 캐릭터 속도
+    private int bullets, life = 3, powerLevel;    // 총알, 라이프, 파워 레벨
+    private int specialShotCount;   // 특수 공격 갯수
+    private boolean isSpecialShooting;  // 특수 공격을 사용중인가
+    private static ArrayList<Integer> bulletSprites = new ArrayList<Integer>(); // 총알 이미지들 모음
+    private final static float MAX_SPEED = 3.5f;    // 플레이어 최대 스피드
+    private final static int MAX_HEART = 3;     // 플레이어 최대 목숨
+    private RectF rectF;        // 플레이어 캐릭터의 HittingBox 좌표
     private boolean isReloading = false;
 
     public StarshipSprite(Context context, SpaceInvadersView game, int resId, int x, int y, float speed) {
+        // 생성시 들어온 매개변수를 저장 및 초기화
         super(context, resId, x, y);
         this.context = context;
         this.game = game;
@@ -41,14 +42,13 @@ public class StarshipSprite extends Sprite {
     }
 
     public void init() {
-        dx = dy = 0;
-        bullets = 30;
-        life = 3;
-        specialShotCount = 3;
-        powerLevel = 0;
-        Integer[] shots = {R.drawable.shot_001, R.drawable.shot_002, R.drawable.shot_003,
-                R.drawable.shot_004, R.drawable.shot_005, R.drawable.shot_006, R.drawable.shot_007};
-
+        dx = dy = 0;    // 움직임 초기화
+        bullets = 30; // 총알 초기화
+        life = 3;     // 라이프 초기화
+        specialShotCount = 3; // 특수공격 수 초기화
+        powerLevel = 0;   // 파워레벨 초기화
+        Integer[] shots = {R.drawable.shot_001, R.drawable.shot_002, R.drawable.shot_003, R.drawable.shot_004,
+                R.drawable.shot_005, R.drawable.shot_006, R.drawable.shot_007};    // 파워레벨에 따른 총알 모양 변경
         for (int i = 0; i < shots.length; i++) {
             bulletSprites.add(shots[i]);
         }
@@ -56,7 +56,7 @@ public class StarshipSprite extends Sprite {
     }
 
     @Override
-    public void move() {
+    public void move() { // 플레이어 움직임 구현
         //벽에 부딪히면 못 가게 하기
         if ((dx < 0) && (x < 120)) return;
         if ((dx > 0) && (x > game.screenW - 120)) return;
@@ -108,54 +108,53 @@ public class StarshipSprite extends Sprite {
 
     // 총알 발사
     public void fire() {
-        if (isReloading | isSpecialShooting) {
+        if (isReloading | isSpecialShooting) { // 총알을 리로딩중이거나 특수공격 사용중엔 총알 발사 못함
             return;
         }
-        MainActivity.effectSound(MainActivity.PLAYER_SHOT);
-        //ShatSprite 생성자 구현
+        MainActivity.effectSound(MainActivity.PLAYER_SHOT); // 총알 발사 할 때마다 총쏘는 효과음 발생
+        // 총알 발사시 ShotSprite 생성
         ShotSprite shot = new ShotSprite(context, game, bulletSprites.get(powerLevel), getX() + 10, getY() - 30, -16);
 
-        //SpaceInvadersView 의 getSprites() 구현
+        // 화면에 나타나는 객체들의 ArrayList에 총알 추가
         game.getSprites().add(shot);
-        bullets--;
+        bullets--;// 소지중인 총알 갯수 1개 소진
 
-        MainActivity.bulletCount.setText(bullets + "/30");
+        MainActivity.bulletCount.setText(bullets + "/30"); // 화면에 소지 총알 텍스트 변경
         Log.d("bullets", bullets + "/30");
-        if (bullets == 0) {
+        if (bullets == 0) {  // 총알 소진시 리로딩
             reloadBullets();
             return;
         }
     }
 
-    public void powerUp() {
+    public void powerUp() {  // 파워업 아이템과 충돌시 파워레벨이 올라감. 최대 파워레벨일시 스코어 증가
         if (powerLevel >= bulletSprites.size() - 1) {
             game.setScore(game.getScore() + 1);
             MainActivity.scoreTv.setText(Integer.toString(game.getScore()));
             return;
         }
         powerLevel++;
-        MainActivity.fireBtn.setImageResource(bulletSprites.get(powerLevel));
+        MainActivity.fireBtn.setImageResource(bulletSprites.get(powerLevel)); // 파워레벨이 올라가면서 총알 모양도 바뀜
         MainActivity.fireBtn.setBackgroundResource(R.drawable.round_button_shape);
     }
 
-    // 총알 다시 셋팅
-    public void reloadBullets() {
-        isReloading = true;
-        MainActivity.effectSound(MainActivity.PLAYER_RELOAD);
-        MainActivity.fireBtn.setEnabled(false);
-        MainActivity.reloadBtn.setEnabled(false);
-        //Thread sleep 사용하지 않고 지연시키는 클래스
-        new Handler().postDelayed(new Runnable() {
+    public void reloadBullets() {   // 총알 리로딩 함수
+        isReloading = true;     // 리로딩 bool 을 true로 변경
+        MainActivity.effectSound(MainActivity.PLAYER_RELOAD);   // 리로딩 효과음발생
+        MainActivity.fireBtn.setEnabled(false); // 리로딩 하는 동안 총알 발사 버튼 사용 못하게 막기
+        MainActivity.reloadBtn.setEnabled(false);   // 리로딩 하는 동안 리로딩 버튼 사용 못하게 막기
+
+        new Handler().postDelayed(new Runnable(){   // 리로딩은 2초간 진행. 리로딩이 끝나면 총알 갯수는 다시 30개로 채워지며 버튼들 사용가능
             @Override
             public void run() {
                 bullets = 30;
                 MainActivity.fireBtn.setEnabled(true);
                 MainActivity.reloadBtn.setEnabled(true);
-                MainActivity.bulletCount.setText(bullets + "/30");
-                MainActivity.bulletCount.invalidate(); //화면 새로고침
-                isReloading = false;
+                MainActivity.bulletCount.setText(bullets+"/30");
+                MainActivity.bulletCount.invalidate();
+                isReloading=false;
             }
-        }, 2000);
+        },2000);
     }
 
     // 필사기
@@ -231,8 +230,9 @@ public class StarshipSprite extends Sprite {
     }
 
     private void specialUp() {
-        if (specialShotCount > 3) {
-            return;
+        if (specialShotCount >= 3) {
+            specialShotCount = 3;
+            MainActivity.specialShotCount.invalidate(); //화면 새로고침
         } else {
             specialShotCount++;
             MainActivity.specialShotCount.invalidate(); //화면 새로고침
@@ -242,32 +242,33 @@ public class StarshipSprite extends Sprite {
 
     //Sprite의 handleCollision() -> 충돌처리
     @Override
-    public void handleCollision(Sprite other) {
-        if (other instanceof AlienSprite) {
+    public void handleCollision(Sprite other) {  // 플레이어와 다른 객체가 충돌 했을 때의 기능 구현
+        if (other instanceof AlienSprite) {  // 적과 충돌했을시 라이프 감소
             //외계인 맞으면
             game.removeSprite(other);
             MainActivity.effectSound(MainActivity.PLAYER_HURT);
             hurt();
         }
-        if (other instanceof AlienShotSprite) {
+
+        if (other instanceof AlienShotSprite) { // 스피드업 아이템과 충돌했을시 스피드증가 또는 스코어증가
             //총알 맞으면
             MainActivity.effectSound(MainActivity.PLAYER_HURT);
             game.removeSprite(other);
             hurt();
         }
-        if (other instanceof PowerItemSprite) {
+        if (other instanceof PowerItemSprite) {  // 적의 총알과 충돌했을시 라이프 감소
             //파워아이템을 맞으면
             MainActivity.effectSound(MainActivity.PLAYER_GET_ITEM);
             powerUp();
             game.removeSprite(other);
         }
-        if (other instanceof HealitemSprite) {
+        if (other instanceof HealitemSprite) { // 파워 아이템과 충돌했을시 파워레벨 증가 또는 스코어증가
             //생명아이템 맞으면
             MainActivity.effectSound(MainActivity.PLAYER_GET_ITEM);
             game.removeSprite(other);
             heal();
         }
-        if (other instanceof SpeedItemSprite) {
+        if (other instanceof SpeedItemSprite) { // 힐링 아이템과 충돌했을시 라이프 증가
             //스피드아이템 맞으면
             MainActivity.effectSound(MainActivity.PLAYER_GET_ITEM);
             game.removeSprite(other);

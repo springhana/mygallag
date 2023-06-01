@@ -9,15 +9,15 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 
 public class Sprite {
-    protected float x, y;
-    protected int width, height;
-    protected float dx, dy;
-    private Bitmap bitmap;
-    protected int id;
-    private RectF rect; // 사각형의 좌표를 표현하기 위해 사용
+    protected float x,y;        // 이미지의 좌표
+    protected int width, height;    // 이미지의 가로 세로 길이
+    protected float dx, dy;     //이미지가 움직이는 크기
+    private Bitmap bitmap;      //이미지 파일
+    private int id;         //이미지 리소스 파일 id
+    private RectF rect;     //이미지의 각 사각형 꼭짓점 좌표
 
     public Sprite(Context context, int resourceId, float x, float y) {
-        this.id = resourceId;
+        this.id = resourceId;       //초기화 과정으로 Sprite를 상속받은 객체가 생성될 때 각 변수들의 정보를 저장
         this.x = x;
         this.y = y; 
         bitmap = BitmapFactory.decodeResource(context.getResources(), resourceId); // 안드로이드에서 비트맵을 생성하고 디코딩 ( 앱의 리소스를 비트맵으로 변환하여 사용 가능 )
@@ -36,9 +36,10 @@ public class Sprite {
     }
 
     public void draw(Canvas canvas, Paint paint) {
-        canvas.drawBitmap(bitmap, x, y, paint); // canvas에 비트맵을 그린다.(그려질 비트맵, x좌표, y좌표, paint)
+        canvas.drawBitmap(bitmap, x, y, paint); // canvas에 비트맵을 그린다.(그려질 비트맵, x좌표, y좌표, paint) // 화면에 그려내는 함수
     }
 
+    // 객체의 움직임을 좌표화하는 함수
     public void move() {
         x = x + dx;
         y = y + dy;
@@ -77,12 +78,11 @@ public class Sprite {
         return rect;
     }
 
-    // 두개의 RectF 객체를 받아 두 사각형이 교차하는지 여부를 판단
+    // 다른 객체와 충돌하였는가를 판단하는 boolean 함수
     public boolean checkCollision(Sprite other) {
         return RectF.intersects(this.getRect(), other.getRect());
     }
-
-    // 충돌처리위한
+    // 다른 객체와 충돌했을 때 어떤 작용을 할 것인지 구현하는 함수
     public void handleCollision(Sprite other) {
     }
 
