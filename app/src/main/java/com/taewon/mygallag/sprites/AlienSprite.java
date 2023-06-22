@@ -137,7 +137,7 @@ public class AlienSprite extends Sprite {
     private void spawnSpecialItem() {
         Random r = new Random();
         int specialItemDrop = r.nextInt(100) + 1;
-        if (specialItemDrop <= 50) {
+        if (specialItemDrop <= 5) {
             int dx = r.nextInt(10) + 1;
             int dy = r.nextInt(10) + 5;
             game.getSprites().add(new SpecialItemSprite(context, game, (int) this.getX(), (int) this.getY(), dx, dy));

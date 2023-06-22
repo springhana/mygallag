@@ -137,7 +137,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable, SurfaceH
 
             for (int i = 0; i < sprites.size(); i++) {
                 Sprite sprite = (Sprite) sprites.get(i); //ArrayList에꺼 하나씩 가져와서 움직이기 (sprites는 ArrayList)
-                sprite.move(); // 좌표 잡기
+                sprite.move(); // 화면에 추가된 모든 객체들의 이동을 구현
             }
 
             // sprites(배열) 크기 만큼 반복
