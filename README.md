@@ -1,5 +1,5 @@
 ### 코드 분석
-<a href="https://github.com/springhana/mygallag/edit/master/README.md">myGallag 분석</a>
+<a href="https://github.com/springhana/mygallag/blob/master/docs/myGallag.md">myGallag 분석</a>
 
 ## 선택 장면&nbsp;&nbsp;|&nbsp;&nbsp;죽는 장면
 * 적 비행기에게 충돌나거나 총알을 맞으면 생명❤️ 1개를 읽게됩니다.
